@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.soft1851.cloud.music.admin.mapper.SysAdminMapper">
+
+    <select id="getAdminRoleByAdminName" parameterType="String" resultType="map">
+        SELECT t2.role_name, t1.role_id
+        FROM role_admin t1
+                 LEFT JOIN sys_role t2 ON t2.role_id = t1.role_id
+        WHERE t1.name = #{name}
+    </select>
+    <select id="selectAll"  resultMap="roleMap">
+        SELECT id,name,avatar,create_time,status FROM sys_admin
+    </select>
+</mapper>
